@@ -5,10 +5,10 @@ import { isValidPassword } from './src/passwordGate.js';
 // static file is ever served, so the password check and content never reach the
 // browser until a valid session cookie is presented.
 //
-// Password: `holly` + the current time (hh:mm am/pm, 2-digit hour and minute,
-// e.g. `holly0122am` for 1:22 AM), computed server-side via the shared
-// src/passwordGate.js logic - never shipped to the client. Any guess within
-// +/-5 minutes of the visitor's request time is accepted.
+// Password: `holly` + the current Central time (hh:mm am/pm, 2-digit hour and
+// minute, e.g. `holly0122am` for 1:22 AM Central), computed server-side via
+// the shared src/passwordGate.js logic - never shipped to the client. Any
+// guess within +/-5 minutes of that Central-time anchor is accepted.
 //
 // Required Vercel project environment variable (Project Settings -> Environment
 // Variables), then redeploy:

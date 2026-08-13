@@ -1,10 +1,25 @@
 // Shared time-based password logic.
 // Password = word + hh:mm + am/pm (no punctuation, 2-digit hour and minute),
 // anchored `offsetMinutes` ahead of "now", accepting any guess within
-// `windowMinutes` of that anchor.
+// `windowMinutes` of that anchor. Always evaluated in Central time (handles
+// CST/CDT automatically) regardless of the visitor's or server's own
+// timezone, so the password is predictable from wherever it's checked.
+const TIME_ZONE = 'America/Chicago';
+
+function centralHourMinute(date) {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: TIME_ZONE,
+    hourCycle: 'h23',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).formatToParts(date);
+  const h = Number(parts.find((p) => p.type === 'hour').value);
+  const m = Number(parts.find((p) => p.type === 'minute').value);
+  return { h, m };
+}
+
 export function buildPasswordWord(word, date) {
-  const h = date.getHours();
-  const m = date.getMinutes();
+  const { h, m } = centralHourMinute(date);
   const ampm = h >= 12 ? 'pm' : 'am';
   let h12 = h % 12;
   if (h12 === 0) h12 = 12;
