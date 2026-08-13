@@ -848,23 +848,8 @@ table.rank-table tr:hover td{background:var(--surface2);}
 
 footer{padding:16px 28px; border-top:1px solid var(--border); font-size:10.5px; color:var(--text-faint); text-align:center;}
 </style>
-<style>
-  body.pw-locked > *:not(#pw-gate) { visibility: hidden !important; }
-  body.pw-locked { overflow: hidden; }
-  #pw-gate * { box-sizing: border-box; }
-</style>
 </head>
-<body class="pw-locked">
-
-<div id="pw-gate" role="dialog" aria-modal="true" aria-labelledby="pw-gate-title" style="position:fixed;inset:0;z-index:999999;display:flex;align-items:center;justify-content:center;background:#0b0d12;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
-  <form id="pw-gate-form" style="background:#151820;border:1px solid #262b36;border-radius:14px;padding:2.25rem 2rem;width:min(360px,90vw);box-shadow:0 24px 64px rgba(0,0,0,.5);text-align:center;">
-    <div id="pw-gate-title" style="font-size:1.05rem;font-weight:700;color:#f2f3f5;margin-bottom:.4rem;">Protected Dashboard</div>
-    <div style="font-size:.85rem;color:#9aa0ab;margin-bottom:1.25rem;line-height:1.4;">This project is password protected. Enter the access password to continue.</div>
-    <input id="pw-gate-input" type="password" autocomplete="off" placeholder="Password" style="width:100%;padding:.65rem .85rem;border-radius:8px;border:1px solid #2c313d;background:#0e0f13;color:#f2f3f5;font-size:.95rem;margin-bottom:.85rem;" />
-    <button type="submit" style="width:100%;padding:.65rem .85rem;border-radius:8px;border:none;background:#4f46e5;color:#fff;font-weight:600;font-size:.9rem;cursor:pointer;">Unlock</button>
-    <div id="pw-gate-error" style="min-height:1.1em;color:#f87171;font-size:.8rem;margin-top:.75rem;"></div>
-  </form>
-</div>
+<body>
 
 <header>
   <div class="header-left">
@@ -1318,48 +1303,5 @@ render();
 renderRankTable();
 </script>
 
-<script>
-(function () {
-  function buildPassword(date) {
-    var h = date.getHours();
-    var m = date.getMinutes();
-    var ampm = h >= 12 ? 'pm' : 'am';
-    var h12 = h % 12;
-    if (h12 === 0) h12 = 12;
-    var mm = m < 10 ? '0' + m : String(m);
-    return 'holly' + h12 + mm + ampm;
-  }
-
-  function isValidPassword(guessRaw) {
-    var guess = (guessRaw || '').trim().toLowerCase();
-    if (!guess) return false;
-    var now = new Date();
-    for (var offset = -5; offset <= 5; offset++) {
-      var t = new Date(now.getTime() + offset * 60000);
-      if (buildPassword(t) === guess) return true;
-    }
-    return false;
-  }
-
-  var gate = document.getElementById('pw-gate');
-  var form = document.getElementById('pw-gate-form');
-  var input = document.getElementById('pw-gate-input');
-  var error = document.getElementById('pw-gate-error');
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (isValidPassword(input.value)) {
-      document.body.classList.remove('pw-locked');
-      gate.remove();
-    } else {
-      error.textContent = 'Incorrect password. Try again.';
-      input.value = '';
-      input.focus();
-    }
-  });
-
-  setTimeout(function () { input.focus(); }, 50);
-})();
-</script>
 </body>
 </html>
