@@ -1,1 +1,1 @@
-Licenc=se
+License
