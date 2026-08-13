@@ -3,7 +3,7 @@
 A modern, minimalist personal portfolio built with Vite + React. CSS uses custom properties
 (design tokens) for theming, with a functional dark/light mode toggle.
 
-## File Structure
+## File Structure 
 
 ```
 .
