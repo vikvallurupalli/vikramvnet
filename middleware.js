@@ -23,8 +23,11 @@ const LOGIN_PATH = '/op/login';
 const COOKIE_NAME = 'op_session';
 const SESSION_HOURS = 12;
 
+// Vercel statically analyzes this export at build time, so the matcher array
+// must be literal strings (no identifiers) - keep in sync with PROTECTED_PATH
+// and LOGIN_PATH above.
 export const config = {
-  matcher: [PROTECTED_PATH, LOGIN_PATH],
+  matcher: ['/op/OP_Simulation_Dashboard_corrected.html', '/op/login'],
 };
 
 function toHex(buffer) {
