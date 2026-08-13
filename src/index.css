@@ -726,53 +726,6 @@ a.hero__link:hover {
   color: var(--accent);
 }
 
-.btn--block {
-  width: 100%;
-}
-
-.contact-form {
-  display: grid;
-  gap: 1rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
-}
-
-.field {
-  display: grid;
-  gap: 0.4rem;
-}
-
-.field label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-}
-
-.field input,
-.field textarea {
-  font: inherit;
-  padding: 0.65rem 0.85rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text-primary);
-  resize: vertical;
-  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
-}
-
-.field input:focus,
-.field textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
-}
-
-.form-note {
-  font-size: 0.85rem;
-  color: var(--accent);
-  min-height: 1.2em;
-}
-
 /* ==========================================================================
    Inline password gate (About / Work modals)
    ========================================================================== */
