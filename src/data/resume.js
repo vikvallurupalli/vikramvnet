@@ -106,11 +106,6 @@ export const RESUME = {
       desc: 'Performed exploratory data analysis and cleansing on a UC Irvine breast cancer dataset to prepare it for ANN training: handled missing/duplicate values, normalization, outlier removal, and one-hot encoding.',
       tags: ['Python', 'Pandas', 'Scikit-learn', 'NumPy', 'Matplotlib'],
     },
-    {
-      title: 'Monkey Health Explorer (Zooniverse)',
-      desc: 'Contributed to a UNC-Chapel Hill / NC State research project studying how genes influence social behavior in rhesus macaques, classifying 150 white blood cell samples across five cell types.',
-      tags: ['Citizen Science', 'Data Classification'],
-    },
   ],
 
   skillTags: [

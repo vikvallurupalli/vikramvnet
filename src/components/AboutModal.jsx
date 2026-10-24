@@ -38,7 +38,6 @@ export default function AboutModal({ open, onClose }) {
             <ul className="edu-card__facts">
               <li>GPA: <strong>5.0000</strong> weighted / <strong>4.0000</strong> unweighted</li>
               <li>Principal's Honor Roll</li>
-              <li>PSAT 10: 1460/1520 &middot; ACT: 33 (Sept 2025)</li>
               <li>AP Computer Science A — Score 5 &middot; AP Human Geography — Score 5</li>
             </ul>
             <p className="edu-card__sub" style={{ marginTop: '.6rem' }}>
